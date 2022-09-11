@@ -7,6 +7,8 @@ import br.ufac.sgcm.model.Unidade;
 
 public class UnidadeController implements IController<Unidade>{
 
+    private UnidadeDao dao;
+
     public UnidadeController(){
         dao = new UnidadeDao();
     }

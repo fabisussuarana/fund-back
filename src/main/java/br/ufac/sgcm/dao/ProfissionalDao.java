@@ -53,7 +53,6 @@ public class ProfissionalDao implements IDao<Profissional>{
     public Profissional get(Long id) {
         Profissional registro = new Profissional();
 
-        List<Profissional> registros = new ArrayList<>();
         String sql = "SELECT * FROM profissional WHERE id ?";
 
         try {
