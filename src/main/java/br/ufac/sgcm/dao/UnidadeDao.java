@@ -34,7 +34,6 @@ public class UnidadeDao implements IDao<Unidade> {
                 registros.add(registro);
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return registros;
@@ -54,7 +53,6 @@ public class UnidadeDao implements IDao<Unidade> {
                 registro.setEndereco(rs.getString("endereco"));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return registro;
@@ -62,19 +60,16 @@ public class UnidadeDao implements IDao<Unidade> {
 
     @Override
     public int insert(Unidade objeto) {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public int update(Unidade objeto) {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public int delete(Long id) {
-        // TODO Auto-generated method stub
         return 0;
     }
     

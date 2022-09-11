@@ -35,7 +35,6 @@ public class EspecialidadeDao implements IDao<Especialidade>{
                 registros.add(registro);
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -57,7 +56,6 @@ public class EspecialidadeDao implements IDao<Especialidade>{
                 registro.setNome(rs.getString("nome")); 
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -71,13 +69,11 @@ public class EspecialidadeDao implements IDao<Especialidade>{
 
     @Override
     public int update(Especialidade objeto) {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public int delete(Long id) {
-        // TODO Auto-generated method stub
         return 0;
     }
     

@@ -22,7 +22,6 @@ public class ConexaoDB {
         try {
             conexao = DriverManager.getConnection(url, usuario, senha);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
