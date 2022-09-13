@@ -24,7 +24,7 @@ public class ProfissionalController implements IController<Profissional>{
     }
 
     @Override
-    public int save(Profissional objeto) {
+    public int save(Profissional objeto) throws SQLException {
         int registrosAfetados = 0;
         if(objeto.getId() == null){
             registrosAfetados = dao.insert(objeto);

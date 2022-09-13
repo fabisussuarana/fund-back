@@ -77,8 +77,18 @@ public class ProfissionalDao implements IDao<Profissional>{
     }
 
     @Override
-    public int insert(Profissional objeto) {
-        return 0;
+    public int insert(Profissional objeto) throws SQLException {
+        int registrosAfetados = 0;
+        String sql = "INSERT INTO profissional " + "(nome, registro_conselho, telefone," + " email, especialidade_id, unidade_id) "
+        + " VALUES (?, ?, ?, ?, ?, ?)";
+        ps = conexao.prepareStatement(sql);
+        ps.setString(1, objeto.getNome());
+        ps.setString(2, objeto.getRegistroConselho());
+        ps.setString(3, objeto.getTelefone());
+        ps.setString(4, objeto.getEmail());
+        ps.setLong(5, objeto.getEspecialidade());
+        ps.setString(6, objeto.getUnidade());
+        return registrosAfetados;
     }
 
     @Override

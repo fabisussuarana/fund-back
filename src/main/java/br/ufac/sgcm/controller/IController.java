@@ -6,6 +6,6 @@ import java.util.List;
 public interface IController<T> {
     List<T> get();
     T get(Long id);
-    int save(T objeto);
+    int save(T objeto) throws SQLException;
     int delete(Long id) throws SQLException;
 }
