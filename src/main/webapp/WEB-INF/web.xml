@@ -18,4 +18,9 @@
     <servlet-name>PrimeiroServlet</servlet-name>
     <url-pattern>/primeiroServlet</url-pattern>
   </servlet-mapping>
+
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/erro.jsp</location>
+  </error-page>
 </web-app>

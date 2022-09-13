@@ -1,4 +1,23 @@
 <%@ page pageEncoding="UTF-8" %>
+
+<jsp:useBean
+    id="controller"
+    class="br.ufac.sgcm.controller.ProfissionalController"
+    scope="page" />
+
+<jsp:useBean
+    id="item"
+    class="br.ufac.sgcm.controller.Profissional"
+    scope="page" />
+
+<%
+    String paramId = request.getParameter("id");
+    if(paramId != null){
+        Long id = Long.parseLong(paramId);
+        item = controller.get(id);
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <%@ include file="include/head.jsp" %>
@@ -9,9 +28,11 @@
             <form action="#">
                 <div class="grid">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome" required>
+                    <input type="text" name="nome" id="nome" value="<%=item.getNome() != null ? item.getNome() : ""%>" required>
+
                     <label for="registroConselho">Registro</label>
-                    <input type="text" name="registroConselho" id="registroConselho">
+                    <input type="text" name="registroConselho" id="registroConselho" value="<%=item.getRegistroConselho() != null ? item.getRegistroConselho() : ""%>">
+
                     <label for="especialidade">Especialidade</label>
                     <select name="especialidade" id="especialidade" required>
                         <option value=""></option>
@@ -30,10 +51,12 @@
                         <option value="4">Unidade D</option>
                         <option value="5">Unidade E</option>
                     </select>
+
                     <label for="telefone">Telefone</label>
-                    <input type="text" name="telefone" id="telefone">
+                    <input type="text" name="telefone" id="telefone" value="<%=item.getTelefone() != null ? item.getTelefone() : ""%>">
+
                     <label for="email">E-mail</label>
-                    <input type="text" name="email" id="email">
+                    <input type="text" name="email" id="email" value="<%=item.getEmail() != null ? item.getEmail() : ""%>">
                 </div>
                 <input type="button" value="Cancelar" data-url="profissionais.jsp">
                 <input type="submit" value="Salvar">

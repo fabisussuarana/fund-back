@@ -87,16 +87,14 @@ public class ProfissionalDao implements IDao<Profissional>{
     }
 
     @Override
-    public int delete(Long id) {
+    public int delete(Long id) throws SQLException {
         int registrosAfetados = 0;
         String sql = "DELETE FROM profissional WHERE id ?";
-        try {
+
             ps = conexao.prepareStatement(sql);
             ps.setLong(1, id);
             registrosAfetados = ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
         return registrosAfetados;
     }
     

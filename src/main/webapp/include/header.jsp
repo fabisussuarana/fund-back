@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <header>
         <div id="logo">
-            <img src="img/logo.png" alt="Logo SGCM">
+            <img src="include/img/logo.png" alt="Logo SGCM">
             <span id="titulo">SGCM</span>
         </div>
 

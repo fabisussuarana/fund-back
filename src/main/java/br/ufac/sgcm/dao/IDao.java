@@ -1,5 +1,6 @@
 package br.ufac.sgcm.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IDao<T> {
@@ -7,5 +8,5 @@ public interface IDao<T> {
     T get(Long id);
     int insert(T objeto);
     int update(T objeto);
-    int delete(Long id);
+    int delete(Long id) throws SQLException;
 }

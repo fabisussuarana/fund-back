@@ -1,5 +1,6 @@
 package br.ufac.sgcm.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import br.ufac.sgcm.dao.ProfissionalDao;
@@ -34,7 +35,7 @@ public class ProfissionalController implements IController<Profissional>{
     }
 
     @Override
-    public int delete(Long id) {
+    public int delete(Long id) throws SQLException {
         return dao.delete(id);
     }
 }
