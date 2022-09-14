@@ -41,6 +41,7 @@ public class ProfissionalDao implements IDao<Profissional>{
                 registro.setEmail(rs.getString("email"));
                 registro.setEspecialidade(especialidadeDao.get(rs.getLong("especialidade_id")));
                 registro.setUnidade(unidadeDao.get(rs.getLong("unidade_id")));
+                registro.add(registro);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,7 +88,7 @@ public class ProfissionalDao implements IDao<Profissional>{
         ps.setString(3, objeto.getTelefone());
         ps.setString(4, objeto.getEmail());
         ps.setLong(5, objeto.getEspecialidade());
-        ps.setString(6, objeto.getUnidade());
+        ps.setLong(6, objeto.getUnidade());
         return registrosAfetados;
     }
 

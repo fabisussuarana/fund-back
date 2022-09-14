@@ -36,7 +36,13 @@
     if(paramId != null){
         item.setNome(request.getParameter("nome"));
         item.setRegistroConselho(request.getParameter("telefone"));
-        
+        item.setTelefone(request.getParameter("telefone"));
+        item.setEmail(request.getParameter("email"));
+        item.setEspecialidade(request.getParameter("especialidade"));
+        item.setUnidade(request.getParameter("unidade"));
+
+        controller.save(item);
+        pageContext.forward("profissionais.jsp");
     }
 %>
 
@@ -48,6 +54,8 @@
         <%@ include file="include/nav.jsp" %>
         <main>
             <form action="#">
+            <%=request.getParameter("submit")%>
+            <form method="post">
                 <div class="grid">
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" id="nome" value="<%=item.getNome() != null ? item.getNome() : ""%>" required>
@@ -65,7 +73,7 @@
                                     if(e.getId() == item.getEspecialidade().getId()) selecionado = " selected";
                                 }
                         %>
-                        <option value="<%=e.getId()%>"<%=selecionado%>><%=e.getNome()%>Especialidade A</option>
+                        <option value="<%=e.getId()%>"<%=selecionado%>><%=e.getNome()%></option>
 
                         <% } %>
                     </select>
@@ -79,7 +87,7 @@
                                     if(e.getId() == item.getUnidade().getId()) selecionado = " selected";
                                 }
                         %>
-                        <option value="<%=e.getId()%>"><%=e.getNome()%>Unidade A</option>
+                        <option value="<%=e.getId()%>"<%=selecionado%>><%=e.getNome()%>Unidade A</option>
 
                         <% } %>
                     </select>
@@ -91,7 +99,7 @@
                     <input type="text" name="email" id="email" value="<%=item.getEmail() != null ? item.getEmail() : ""%>">
                 </div>
                 <input type="button" value="Cancelar" data-url="profissionais.jsp">
-                <input type="submit" value="Salvar">
+                <input type="submit" value="Salvar" name="submit">
             </form>
         </main>
         <%@ include file="include/footer.jsp" %>

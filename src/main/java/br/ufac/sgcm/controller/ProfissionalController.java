@@ -28,8 +28,6 @@ public class ProfissionalController implements IController<Profissional>{
         int registrosAfetados = 0;
         if(objeto.getId() == null){
             registrosAfetados = dao.insert(objeto);
-        }else{
-            registrosAfetados = dao.update(objeto);
         }
         return registrosAfetados;
     }
