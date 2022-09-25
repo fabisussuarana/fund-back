@@ -87,8 +87,8 @@ public class ProfissionalDao implements IDao<Profissional>{
         ps.setString(2, objeto.getRegistroConselho());
         ps.setString(3, objeto.getTelefone());
         ps.setString(4, objeto.getEmail());
-        ps.setLong(5, objeto.getEspecialidade());
-        ps.setLong(6, objeto.getUnidade());
+        ps.setLong(5, objeto.getEspecialidade().getId());
+        ps.setLong(6, objeto.getUnidade().getId());
         return registrosAfetados;
     }
 
@@ -100,7 +100,7 @@ public class ProfissionalDao implements IDao<Profissional>{
     @Override
     public int delete(Long id) throws SQLException {
         int registrosAfetados = 0;
-        String sql = "DELETE FROM profissional WHERE id ?";
+        String sql = "DELETE FROM profissional WHERE id = ?";
 
             ps = conexao.prepareStatement(sql);
             ps.setLong(1, id);
