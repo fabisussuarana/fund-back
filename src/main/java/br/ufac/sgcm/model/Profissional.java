@@ -65,4 +65,6 @@ public class Profissional implements Serializable{
         unidade.setId(id);
         this.unidade = unidade;
     }
+    public void add(Profissional registro) {
+    }
 }

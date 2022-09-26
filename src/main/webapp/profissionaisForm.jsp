@@ -20,7 +20,7 @@
 
 <jsp:useBean
     id="item"
-    class="br.ufac.sgcm.controller.Profissional"
+    class="br.ufac.sgcm.model.Profissional"
     scope="page" />
 
 <%
@@ -33,9 +33,10 @@
 
 <%
     String submit = request.getParameter("submit");
-    if(paramId != null){
+    if(submit != null){
+        out.print("<div>teste</div>");
         item.setNome(request.getParameter("nome"));
-        item.setRegistroConselho(request.getParameter("telefone"));
+        item.setRegistroConselho(request.getParameter("registroConselho"));
         item.setTelefone(request.getParameter("telefone"));
         item.setEmail(request.getParameter("email"));
         item.setEspecialidade(request.getParameter("especialidade"));
@@ -53,7 +54,6 @@
         <%@ include file="include/header.jsp" %>
         <%@ include file="include/nav.jsp" %>
         <main>
-            <form action="#">
             <%=request.getParameter("submit")%>
             <form method="post">
                 <div class="grid">
@@ -67,27 +67,32 @@
                     <select name="especialidade" id="especialidade" required>
                         <option value=""></option>
                         <%
-                            selecionado = "";
+                            String selecionado = "";
                             for (Especialidade e: controllerE.get()) { 
+                                selecionado = "";
                                 if(item.getId() != null) {
-                                    if(e.getId() == item.getEspecialidade().getId()) selecionado = " selected";
+                                    if(e.getId() == item.getEspecialidade().getId()){
+                                        selecionado = " selected";
+                                    }
                                 }
                         %>
                         <option value="<%=e.getId()%>"<%=selecionado%>><%=e.getNome()%></option>
-
                         <% } %>
                     </select>
+
                     <label for="unidade">Unidade</label>
                     <select name="unidade" id="unidade">
                         <option value=""></option>
                         <%
-                            selecionado = "";
                             for (Unidade u: controllerU.get()) { 
+                                selecionado = "";
                                 if(item.getId() != null) {
-                                    if(e.getId() == item.getUnidade().getId()) selecionado = " selected";
+                                    if(u.getId() == item.getUnidade().getId()){
+                                        selecionado = " selected";
+                                    } 
                                 }
                         %>
-                        <option value="<%=e.getId()%>"<%=selecionado%>><%=e.getNome()%>Unidade A</option>
+                        <option value="<%=u.getId()%>"<%=selecionado%>><%=u.getNome()%></option>
 
                         <% } %>
                     </select>

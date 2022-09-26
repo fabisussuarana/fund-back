@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ page import="true" %>
+<%@ page isErrorPage="true" %>
 <%@ page import="java.io.StringWriter" %>
-<%@ page import="java.io.PrinteWriter" %>
+<%@ page import="java.io.PrintWriter" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,9 +14,9 @@
             <pre>
                 <%
                     StringWriter sw = new StringWriter();
-                    PrinteWriter pw = new PrinteWriter(sw);
+                    PrintWriter pw = new PrintWriter(sw);
                     exception.printStackTrace(pw);
-                    out.println(sw.toString().replace("<", "&lt").replace(">", "&gt;"));
+                    out.println(sw.toString().replace("<","&lt;").replace(">","&gt;"));
                 %>
             </pre>
         </main>

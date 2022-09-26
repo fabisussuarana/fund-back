@@ -20,7 +20,7 @@
 
 <jsp:useBean
     id="item"
-    class="br.ufac.sgcm.controller.Profissional"
+    class="br.ufac.sgcm.model.Profissional"
     scope="page" />
 
 <%
@@ -31,6 +31,22 @@
     }
 %>
 
+<%
+    String submit = request.getParameter("submit");
+    if(submit != null){
+        out.print("<div>teste</div>");
+        item.setNome(request.getParameter("nome"));
+        item.setRegistroConselho(request.getParameter("registroConselho"));
+        item.setTelefone(request.getParameter("telefone"));
+        item.setEmail(request.getParameter("email"));
+        item.setEspecialidade(request.getParameter("especialidade"));
+        item.setUnidade(request.getParameter("unidade"));
+
+        controller.save(item);
+        pageContext.forward("profissionais.jsp");
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <%@ include file="include/head.jsp" %>
@@ -38,7 +54,8 @@
         <%@ include file="include/header.jsp" %>
         <%@ include file="include/nav.jsp" %>
         <main>
-            <form action="#">
+            <%=request.getParameter("submit")%>
+            <form method="post">
                 <div class="grid">
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" id="nome" value="<%=item.getNome() != null ? item.getNome() : ""%>" required>
@@ -50,27 +67,32 @@
                     <select name="especialidade" id="especialidade" required>
                         <option value=""></option>
                         <%
-                            selecionado = "";
+                            String selecionado = "";
                             for (Especialidade e: controllerE.get()) { 
+                                selecionado = "";
                                 if(item.getId() != null) {
-                                    if(e.getId() == item.getEspecialidade().getId()) selecionado = " selected";
+                                    if(e.getId() == item.getEspecialidade().getId()){
+                                        selecionado = " selected";
+                                    }
                                 }
                         %>
-                        <option value="<%=e.getId()%>"<%=selecionado%>><%=e.getNome()%>Especialidade A</option>
-
+                        <option value="<%=e.getId()%>"<%=selecionado%>><%=e.getNome()%></option>
                         <% } %>
                     </select>
+
                     <label for="unidade">Unidade</label>
                     <select name="unidade" id="unidade">
                         <option value=""></option>
                         <%
-                            selecionado = "";
                             for (Unidade u: controllerU.get()) { 
+                                selecionado = "";
                                 if(item.getId() != null) {
-                                    if(e.getId() == item.getUnidade().getId()) selecionado = " selected";
+                                    if(u.getId() == item.getUnidade().getId()){
+                                        selecionado = " selected";
+                                    } 
                                 }
                         %>
-                        <option value="<%=e.getId()%>"><%=e.getNome()%>Unidade A</option>
+                        <option value="<%=u.getId()%>"<%=selecionado%>><%=u.getNome()%></option>
 
                         <% } %>
                     </select>
@@ -82,7 +104,7 @@
                     <input type="text" name="email" id="email" value="<%=item.getEmail() != null ? item.getEmail() : ""%>">
                 </div>
                 <input type="button" value="Cancelar" data-url="profissionais.jsp">
-                <input type="submit" value="Salvar">
+                <input type="submit" value="Salvar" name="submit">
             </form>
         </main>
         <%@ include file="include/footer.jsp" %>

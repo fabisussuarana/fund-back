@@ -102,9 +102,9 @@ public class ProfissionalDao implements IDao<Profissional>{
         int registrosAfetados = 0;
         String sql = "DELETE FROM profissional WHERE id = ?";
 
-            ps = conexao.prepareStatement(sql);
-            ps.setLong(1, id);
-            registrosAfetados = ps.executeUpdate();
+        ps = conexao.prepareStatement(sql);
+        ps.setLong(1, id);
+        registrosAfetados = ps.executeUpdate();
 
         return registrosAfetados;
     }
